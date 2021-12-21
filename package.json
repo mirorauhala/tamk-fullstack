@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/mirorauhala/tamk-fullstack#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "prettier": "^2.5.1"
   }
 }
