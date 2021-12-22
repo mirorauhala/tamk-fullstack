@@ -1,5 +1,16 @@
+import Navbar from "./UI/Navbar";
+import { Routes, Route } from "react-router-dom";
+import Feed from "./screens/Feed";
+
 function App() {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+  return (
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Feed />} />
+      </Routes>
+    </>
+  );
 }
 
 export default App;
