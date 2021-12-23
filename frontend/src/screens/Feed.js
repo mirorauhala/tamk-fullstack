@@ -9,7 +9,7 @@ const Feed = () => {
   return (
     <div className="max-w-2xl mx-auto flex items-center gap-2">
       <Card>
-        <Heading name="cat_person" href="#" />
+        <Heading name="cat_person" href="#nowhere" />
         <Image
           alt="This is my cat steve"
           image="https://placekitten.com/1080/1080"
