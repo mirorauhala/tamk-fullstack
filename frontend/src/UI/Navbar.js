@@ -1,10 +1,13 @@
 import { HeartIcon, HomeIcon, UserCircleIcon } from "@heroicons/react/outline";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <nav className="bg-white border-b border-neutral-200 px-4 py-3 outline outline-1 outline-white mb-10">
       <div className="max-w-2xl mx-auto flex items-center gap-2">
-        <h1 className="font-logo text-3xl pr-20">Instagram</h1>
+        <Link to="/">
+          <h1 className="font-logo text-3xl pr-20">Instagram</h1>
+        </Link>
 
         <form>
           <input
@@ -14,9 +17,17 @@ const Navbar = () => {
           />
         </form>
         <div className="ml-auto flex gap-3">
-          <HomeIcon className="w-6 h-6" />
-          <HeartIcon className="w-6 h-6" />
-          <UserCircleIcon className="w-6 h-6" />
+          <NavLink to={"/"}>
+            <HomeIcon className="w-6 h-6" />
+          </NavLink>
+
+          <NavLink to={"/liked"}>
+            <HeartIcon className="w-6 h-6" />
+          </NavLink>
+
+          <NavLink to={"/settings"}>
+            <UserCircleIcon className="w-6 h-6" />
+          </NavLink>
         </div>
       </div>
     </nav>
