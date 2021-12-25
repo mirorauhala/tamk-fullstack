@@ -1,10 +1,11 @@
 import { HeartIcon, HomeIcon, UserCircleIcon } from "@heroicons/react/outline";
 import { Link, NavLink } from "react-router-dom";
+import SiteContainer from "./SiteContainer";
 
 const Navbar = () => {
   return (
     <nav className="bg-white border-b border-neutral-200 px-4 py-3 outline outline-1 outline-white mb-10">
-      <div className="max-w-2xl mx-auto flex items-center gap-2">
+      <SiteContainer className="flex items-center gap-2">
         <Link to="/">
           <h1 className="font-logo text-3xl pr-20">Instagram</h1>
         </Link>
@@ -29,7 +30,7 @@ const Navbar = () => {
             <UserCircleIcon className="w-6 h-6" />
           </NavLink>
         </div>
-      </div>
+      </SiteContainer>
     </nav>
   );
 };

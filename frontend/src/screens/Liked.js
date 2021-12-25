@@ -4,10 +4,11 @@ import Image from "../Card/Image";
 import Footer from "../Card/Footer";
 import Comments from "../Card/Comments";
 import Comment from "../Card/Comment";
+import SiteContainer from "../UI/SiteContainer";
 
 const Liked = () => {
   return (
-    <div className="max-w-2xl mx-auto flex items-center gap-2">
+    <SiteContainer className="flex items-center gap-2">
       <Card>
         <Heading name="cat_person" href="#nowhere" />
         <Image
@@ -21,7 +22,7 @@ const Liked = () => {
           </Comments>
         </Footer>
       </Card>
-    </div>
+    </SiteContainer>
   );
 };
 export default Liked;
