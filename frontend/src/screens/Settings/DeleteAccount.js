@@ -1,7 +1,3 @@
-import Nav from "../../Settings/Nav";
-import SiteContainer from "../../UI/SiteContainer";
-import InputGroup from "../../UI/Settings/InputGroup";
-
 const DeleteAccount = () => {
   return (
     <form className="flex flex-col">

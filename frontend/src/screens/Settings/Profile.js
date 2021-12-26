@@ -1,12 +1,4 @@
-import Nav from "../../Settings/Nav";
-import SiteContainer from "../../UI/SiteContainer";
 import InputGroup from "../../UI/Settings/InputGroup";
-import { Route, Routes } from "react-router-dom";
-import NotFound from "../NotFound";
-import Feed from "../Feed";
-import Liked from "../Liked";
-import Password from "./Password";
-import DeleteAccount from "./DeleteAccount";
 
 const Profile = () => {
   return (

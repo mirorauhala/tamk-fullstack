@@ -1,5 +1,3 @@
-import Nav from "../../Settings/Nav";
-import SiteContainer from "../../UI/SiteContainer";
 import InputGroup from "../../UI/Settings/InputGroup";
 
 const Password = () => {
