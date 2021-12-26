@@ -8,7 +8,8 @@ import SiteContainer from "../UI/SiteContainer";
 
 const Liked = () => {
   return (
-    <SiteContainer className="flex items-center gap-2">
+    <SiteContainer className="flex flex-col items-center gap-2">
+      <h1 className="text-left w-full mb-2 font-medium text-lg">Liked posts</h1>
       <Card>
         <Heading name="cat_person" href="#nowhere" />
         <Image
