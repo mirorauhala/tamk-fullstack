@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import SiteContainer from "../UI/SiteContainer";
 
 const NotFound = () => {
   return (
-    <div className="max-w-2xl mx-auto">
+    <SiteContainer>
       <h1 className="text-3xl text-center font-medium mb-3">404 Not found</h1>
       <p className="text-center">
         We tried looking everywhere, but the page you requested cannot be found.{" "}
@@ -11,7 +12,7 @@ const NotFound = () => {
         </Link>
         .
       </p>
-    </div>
+    </SiteContainer>
   );
 };
 export default NotFound;
