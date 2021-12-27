@@ -13,7 +13,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
         <Route path="/" element={<Feed />} />
         <Route path="/liked" element={<Liked />} />
-        <Route path="/settings*" element={<Settings />} />
+        <Route path="/settings/*" element={<Settings />} />
       </Routes>
     </>
   );
