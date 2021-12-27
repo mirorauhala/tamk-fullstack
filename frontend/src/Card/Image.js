@@ -1,7 +1,7 @@
-const Image = ({ image, alt }) => {
+const Image = ({ image, alt, ...rest }) => {
   return (
     <div className="aspect-square">
-      <img alt={alt} src={image} />
+      <img alt={alt} src={image} {...rest} />
     </div>
   );
 };
