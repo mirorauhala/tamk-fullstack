@@ -79,6 +79,9 @@ web_modules/
 .env.production
 .env
 
+# docker-compose for production may accidentally contain secret environment variables
+docker-compose.production.yml
+
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 .parcel-cache
