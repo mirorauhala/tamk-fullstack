@@ -1,0 +1,15 @@
+version: "3.1"
+services:
+  insta:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - "ENV=development"
+      - "DATABASE_USER=root"
+      - "DATABASE_PASSWORD="
+      - "DATABASE_HOST=localhost"
+      - "DATABASE_PORT=3306"
+      - "DATABASE_DATABASE=dbktmira3"
+    ports:
+      - "8081:8080"
