@@ -3,10 +3,13 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const cors = require("cors");
+const login = require("./src/api/login.js");
 const users = require("./src/api/users.js");
 const photos = require("./src/api/photos.js");
+const passport = require("passport");
 const session = require("express-session");
 const { Strategy: LocalStrategy } = require("passport-local");
+require("./src/passport.js");
 
 const port = process.env.PORT || 8080;
 
@@ -19,6 +22,8 @@ app.use(
     saveUninitialized: false,
   })
 );
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(express.static(path.join(__dirname, "public")));
 
