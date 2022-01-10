@@ -1,0 +1,12 @@
+POST http://localhost:8080/api/photos
+Content-Type: application/json
+
+{
+  "path": "http://asd.com/asd",
+  "body": "this is my cat stevens"
+}
+
+###
+
+GET http://localhost:8080/api/photos/1
+Content-Type: application/json
