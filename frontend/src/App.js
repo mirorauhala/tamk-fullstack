@@ -6,6 +6,7 @@ import Liked from "./screens/Liked";
 import Settings from "./screens/Settings/Settings";
 import Profile from "./screens/Profile";
 import New from "./screens/New";
+import Photo from "./screens/Photo";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<Feed />} />
         <Route path="/liked" element={<Liked />} />
         <Route path="/new" element={<New />} />
+        <Route path="/p/:photoId" element={<Photo />} />
         <Route path="/settings/*" element={<Settings />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
