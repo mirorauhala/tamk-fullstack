@@ -1,6 +1,6 @@
 import { BookmarkIcon, ChatIcon, HeartIcon } from "@heroicons/react/outline";
 
-const Footer = ({ likes, name, body }) => {
+const Footer = ({ likes, name, body, children }) => {
   return (
     <footer className="bg-white py-4 px-5 rounded-b">
       <div className="flex gap-2 mb-2">
@@ -19,6 +19,7 @@ const Footer = ({ likes, name, body }) => {
         </a>{" "}
         {body}
       </p>
+      {children}
     </footer>
   );
 };
