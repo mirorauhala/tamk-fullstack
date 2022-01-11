@@ -48,10 +48,6 @@ const getPhoto = async (req, res) => {
 };
 
 /**
- * Generate a pre-signed post URL for S3 where to upload images.
- */
-
-/**
  * Generate a pre-signed S3 URL where front-end will upload images.
  *
  * @param req
