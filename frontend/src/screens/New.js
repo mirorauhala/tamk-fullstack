@@ -3,6 +3,7 @@ import Cropper from "react-easy-crop";
 import { useCallback, useRef, useState } from "react";
 import getCroppedImg from "../cropImage";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function readFile(file) {
   return new Promise((resolve) => {
@@ -13,6 +14,7 @@ function readFile(file) {
 }
 
 const New = () => {
+  let navigate = useNavigate();
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const bodyRef = useRef();
   const [zoom, setZoom] = useState(1);
@@ -79,7 +81,7 @@ const New = () => {
       }
     );
 
-    console.log(publishResponse.data);
+    navigate("/p/" + publishResponse.data.insertId, { replace: true });
   };
 
   const getBlob = async (fileUri) => {
