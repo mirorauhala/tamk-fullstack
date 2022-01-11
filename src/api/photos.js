@@ -114,8 +114,8 @@ const postNewPhoto = async (req, res) => {
 
 // register routes
 router.get("/", getPhotos);
-router.get("/:photoId", getPhoto);
 router.get("/presigned-url", getPresignedUrl);
+router.get("/:photoId", getPhoto);
 router.post("/", postNewPhoto);
 
 module.exports = router;
