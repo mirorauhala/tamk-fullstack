@@ -2,7 +2,7 @@ POST http://localhost:8080/api/photos
 Content-Type: application/json
 
 {
-  "path": "http://asd.com/asd",
+  "path": "https://placekitten.com/1080/1080",
   "body": "this is my cat stevens"
 }
 
