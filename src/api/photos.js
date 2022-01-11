@@ -89,17 +89,17 @@ const getPresignedUrl = async (req, res) => {
  */
 const postNewPhoto = async (req, res) => {
   try {
-    const photo = req.body;
-    const validation = validator.validate(photo, photoSchema);
+    const request = req.body;
+    const validation = validator.validate(request, photoSchema);
 
     // validate against photoSchema
     if (validation.errors.length > 0) {
       res.status(400).send(validation.errors);
     } else {
       // save photo to db
-      await Photo.save({
-        path: photo.path,
-        body: photo.body,
+      const photo = await Photo.save({
+        path: request.path,
+        body: request.body,
         is_visible: new Date().toISOString(),
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
