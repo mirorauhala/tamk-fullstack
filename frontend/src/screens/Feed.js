@@ -7,8 +7,9 @@ import Comment from "../Card/Comment";
 import SiteContainer from "../UI/SiteContainer";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Datetime } from "../Card/Datetime";
 
-const FeedCard = ({ body, path }) => {
+const FeedCard = ({ id, body, path, time }) => {
   return (
     <Card>
       <Heading name="cat_person" href="#nowhere" />
@@ -18,6 +19,7 @@ const FeedCard = ({ body, path }) => {
         <Comments>
           <Comment name="asd" body="testing" />
         </Comments>
+        <Datetime id={id} time={time} />
       </Footer>
     </Card>
   );
@@ -46,7 +48,13 @@ const Feed = () => {
       )}
       {photos.length > 0 &&
         photos.map((photo) => (
-          <FeedCard key={photo.id} body={photo.body} path={photo.path} />
+          <FeedCard
+            key={photo.id}
+            id={photo.id}
+            body={photo.body}
+            path={photo.path}
+            time={photo.created_at}
+          />
         ))}
     </SiteContainer>
   );
