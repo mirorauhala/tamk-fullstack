@@ -4,6 +4,8 @@ import { useCallback, useRef, useState } from "react";
 import getCroppedImg from "../cropImage";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Spinner from "../UI/Spinner";
+import Button from "../UI/Button";
 
 function readFile(file) {
   return new Promise((resolve) => {
@@ -14,6 +16,7 @@ function readFile(file) {
 }
 
 const New = () => {
+  const [isLoading, setIsLoading] = useState(false);
   let navigate = useNavigate();
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const bodyRef = useRef();
@@ -47,7 +50,9 @@ const New = () => {
    *
    * @returns {Promise<void>}
    */
-  const handlePublish = async () => {
+  const handlePublish = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
     const image = await getImage();
 
     // fetch pre-signed upload
@@ -81,6 +86,7 @@ const New = () => {
       }
     );
 
+    setIsLoading(false);
     navigate("/p/" + publishResponse.data.insertId, { replace: true });
   };
 
@@ -91,7 +97,7 @@ const New = () => {
 
   return (
     <SiteContainer className="flex flex-col items-center gap-2">
-      <h1 className="text-left w-full mb-2 font-medium text-lg">New post</h1>
+      <h1 className="text-left w-full mb-2 font-bold text-xl">New post</h1>
 
       {!imageSrc ? (
         <input
@@ -132,23 +138,28 @@ const New = () => {
             }}
           />
 
-          <form className="flex flex-col gap-1">
-            <label htmlFor="bodyInput">Post description</label>
+          <form
+            className="flex flex-col items-start w-full gap-1 my-10"
+            onSubmit={handlePublish}
+          >
+            <label htmlFor="bodyInput" className="font-medium">
+              Post description
+            </label>
             <input
               type="text"
               id="bodyInput"
               ref={bodyRef}
-              className="border px-3 py-1 mb-3"
+              className="border w-64 px-3 py-1 mb-1"
               name="body"
             />
 
-            <button
-              type="button"
-              className="bg-white text-black px-4 py-2 rounded-xl font-medium border-2"
-              onClick={handlePublish}
-            >
-              Publish
-            </button>
+            <div className="flex items-center gap-3">
+              <Button type="submit" disabled={isLoading}>
+                Publish
+              </Button>
+
+              {isLoading && <Spinner />}
+            </div>
           </form>
         </>
       )}
