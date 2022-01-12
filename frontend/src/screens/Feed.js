@@ -39,9 +39,15 @@ const Feed = () => {
 
   return (
     <SiteContainer className="flex flex-wrap items-center gap-2">
-      {photos.map((photo) => (
-        <FeedCard key={photo.id} body={photo.body} path={photo.path} />
-      ))}
+      {photos.length === 0 && (
+        <h1 className="w-full text-center font-medium">
+          Be the first to post something.
+        </h1>
+      )}
+      {photos.length > 0 &&
+        photos.map((photo) => (
+          <FeedCard key={photo.id} body={photo.body} path={photo.path} />
+        ))}
     </SiteContainer>
   );
 };
