@@ -5,6 +5,7 @@ const path = require("path");
 const cors = require("cors");
 const login = require("./src/api/login.js");
 const users = require("./src/api/users.js");
+const me = require("./src/api/me.js");
 const photos = require("./src/api/photos.js");
 const passport = require("passport");
 const session = require("express-session");
@@ -28,6 +29,7 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/auth", login);
+app.use("/api/me", me);
 app.use("/api/users", users);
 app.use("/api/photos", photos);
 
