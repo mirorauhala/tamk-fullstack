@@ -1,6 +1,6 @@
 const Comment = ({ name, body, profile }) => {
   return (
-    <p>
+    <p className="px-5">
       <a href={profile} className="font-bold">
         {name}
       </a>{" "}
