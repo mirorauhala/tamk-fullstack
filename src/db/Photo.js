@@ -80,4 +80,29 @@ module.exports = {
       );
     });
   },
+
+  /**
+   * Find photo by id.
+   * @param id
+   * @returns {Promise<unknown>}
+   */
+  commentsForPost: (id) => {
+    return new Promise((resolve, reject) => {
+      pool.query(
+        `SELECT
+           comments.*,
+           users.username
+        FROM comments
+        JOIN users  on comments.user_id = users.id
+        WHERE photo_id = ?`,
+        [id],
+        (err, locations) => {
+          if (err) {
+            reject(err);
+          }
+          resolve(locations);
+        }
+      );
+    });
+  },
 };

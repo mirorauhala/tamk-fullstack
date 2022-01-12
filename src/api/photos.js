@@ -112,10 +112,26 @@ const postNewPhoto = async (req, res) => {
   }
 };
 
+/**
+ * Get comments for photo.
+ * @param req
+ * @param res
+ * @returns {Promise<*>}
+ */
+const getPhotoComments = async (req, res) => {
+  try {
+    const photos = await Photo.commentsForPost(req.params.photoId);
+    res.status(200).send(photos);
+  } catch (error) {
+    return res.status(400).send(error);
+  }
+};
+
 // register routes
 router.get("/", getPhotos);
 router.get("/presigned-url", getPresignedUrl);
 router.get("/:photoId", getPhoto);
 router.post("/", postNewPhoto);
+router.get("/:photoId/comments", getPhotoComments);
 
 module.exports = router;

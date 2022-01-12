@@ -18,16 +18,25 @@ import Comment from "../Card/Comment";
 const Photo = () => {
   let { photoId } = useParams();
   const [photo, setPhoto] = useState();
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     (async () => {
       const photo = await axios.get(
-        process.env.REACT_APP_BACKEND_ENDPOINT + "/api/photos/" + photoId
+        `${process.env.REACT_APP_BACKEND_ENDPOINT}/api/photos/${photoId}`
       );
 
       if (photo.data.length > 0) {
         setPhoto(photo.data[0]);
       }
+    })();
+
+    (async () => {
+      const comments = await axios.get(
+        `${process.env.REACT_APP_BACKEND_ENDPOINT}/api/photos/${photoId}/comments`
+      );
+
+      setComments(comments.data);
     })();
   }, []);
 
@@ -49,7 +58,14 @@ const Photo = () => {
 
             <Body name={"cat_person"} body={photo.body} />
 
-            <Comment name={"asd"} body={"asd"} profile="#" />
+            {comments.length > 0 &&
+              comments.map((comment) => (
+                <Comment
+                  name={comment.username}
+                  body={comment.body}
+                  profile="#"
+                />
+              ))}
             <Datetime id={photo.id} time={photo.created_at} />
 
             <CommentForm />
