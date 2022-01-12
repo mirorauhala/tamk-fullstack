@@ -6,6 +6,7 @@ exports.up = function (knex) {
     table.string("last_name").nullable();
     table.string("bio").nullable();
     table.string("email").notNullable();
+    table.unique("email", { indexName: "user_unique_email" });
     table.string("password").notNullable();
     table.timestamps();
   });
