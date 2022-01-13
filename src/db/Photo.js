@@ -8,7 +8,12 @@ module.exports = {
   all: async () => {
     return new Promise((resolve, reject) => {
       pool.query(
-        "SELECT * FROM photos ORDER BY created_at DESC",
+        `SELECT
+            photos.*,
+            u.username
+        FROM photos
+        JOIN users u on photos.user_id = u.id
+        ORDER BY photos.created_at DESC`,
         (err, photos) => {
           if (err) {
             return reject(err);
@@ -27,10 +32,11 @@ module.exports = {
   save: (photo) => {
     return new Promise((resolve, reject) => {
       pool.query(
-        `INSERT INTO photos (path, body, is_visible, created_at, updated_at) VALUES (?, ?, ?, ?, ?)`,
+        `INSERT INTO photos (path, body, user_id, is_visible, created_at, updated_at) VALUES (?, ?, ?, ?, ?)`,
         [
           photo.path,
           photo.body,
+          photo.user_id,
           photo.is_visible,
           photo.created_at,
           photo.updated_at,
@@ -69,13 +75,18 @@ module.exports = {
   findById: (id) => {
     return new Promise((resolve, reject) => {
       pool.query(
-        `SELECT * FROM photos WHERE id = ?`,
+        `SELECT
+            photos.*,
+            u.username
+        FROM photos
+        JOIN users u on photos.user_id = u.id
+        WHERE photos.id = ?`,
         [id],
-        (err, locations) => {
+        (err, photos) => {
           if (err) {
             reject(err);
           }
-          resolve(locations);
+          resolve(photos);
         }
       );
     });
