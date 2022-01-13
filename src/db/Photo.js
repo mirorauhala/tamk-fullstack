@@ -32,7 +32,7 @@ module.exports = {
   save: (photo) => {
     return new Promise((resolve, reject) => {
       pool.query(
-        `INSERT INTO photos (path, body, user_id, is_visible, created_at, updated_at) VALUES (?, ?, ?, ?, ?)`,
+        `INSERT INTO photos (path, body, user_id, is_visible, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?)`,
         [
           photo.path,
           photo.body,
