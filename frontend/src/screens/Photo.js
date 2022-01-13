@@ -55,7 +55,7 @@ const Photo = () => {
   };
 
   return (
-    <SiteContainer className="flex flex-col items-center gap-2">
+    <SiteContainer className="flex flex-col items-center gap-2 pb-16">
       {photo ? (
         <Card>
           <Heading name="cat_person" href="#nowhere" />

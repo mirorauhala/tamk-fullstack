@@ -74,7 +74,7 @@ const Feed = () => {
   }, []);
 
   return (
-    <SiteContainer className="flex flex-wrap items-center gap-2">
+    <SiteContainer className="flex flex-wrap items-center gap-2 pb-16">
       {photos.length === 0 && (
         <h1 className="w-full text-center font-medium">
           Be the first to post something.
