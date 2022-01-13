@@ -13,7 +13,7 @@ import Likes from "../Card/Likes";
 import { Body } from "../Card/Body";
 import { BookmarkIcon, ChatIcon, HeartIcon } from "@heroicons/react/outline";
 
-const FeedCard = ({ id, body, path, time }) => {
+const FeedCard = ({ id, username, body, path, time }) => {
   const navigate = useNavigate();
 
   const handleNewComment = async (comment) => {
@@ -22,18 +22,17 @@ const FeedCard = ({ id, body, path, time }) => {
       body: comment,
     };
 
-    const commentResponse = await axios.post(
+    await axios.post(
       `${process.env.REACT_APP_BACKEND_ENDPOINT}/api/comments`,
       commentData
     );
 
-    console.log(commentResponse);
     navigate("/p/" + id);
   };
 
   return (
     <Card>
-      <Heading name="cat_person" href="#nowhere" />
+      <Heading name={username} href="#nowhere" />
       <Image alt={body} image={path} />
 
       <CardBody>
@@ -48,7 +47,7 @@ const FeedCard = ({ id, body, path, time }) => {
 
         <Likes likes={200} />
 
-        <Body name={"cat_person"} body={body} />
+        {body && <Body name={username} body={body} />}
 
         <Link to={"/p/" + id} className="px-5 block pt-0.5 text-neutral-500">
           Show all comments
@@ -88,6 +87,7 @@ const Feed = () => {
           <FeedCard
             key={photo.id}
             id={photo.id}
+            username={photo.username}
             body={photo.body}
             path={photo.path}
             time={photo.created_at}

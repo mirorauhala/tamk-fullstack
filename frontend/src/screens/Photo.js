@@ -58,7 +58,7 @@ const Photo = () => {
     <SiteContainer className="flex flex-col items-center gap-2 pb-16">
       {photo ? (
         <Card>
-          <Heading name="cat_person" href="#nowhere" />
+          <Heading name={photo.username} href="#nowhere" />
           <Image alt={photo.body} image={photo.path} />
 
           <CardBody>
@@ -70,7 +70,7 @@ const Photo = () => {
 
             <Likes likes={200} />
 
-            <Body name={"cat_person"} body={photo.body} />
+            {photo.body && <Body name={photo.username} body={photo.body} />}
 
             {comments.length > 0 &&
               comments.map((comment) => (
