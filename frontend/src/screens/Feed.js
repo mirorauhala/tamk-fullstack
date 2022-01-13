@@ -5,7 +5,7 @@ import SiteContainer from "../UI/SiteContainer";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Datetime } from "../Card/Datetime";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CommentForm from "../Card/CommentForm";
 import { Actions } from "../Card/Actions";
 import CardBody from "../Card/CardBody";
@@ -14,6 +14,23 @@ import { Body } from "../Card/Body";
 import { BookmarkIcon, ChatIcon, HeartIcon } from "@heroicons/react/outline";
 
 const FeedCard = ({ id, body, path, time }) => {
+  const navigate = useNavigate();
+
+  const handleNewComment = async (comment) => {
+    const commentData = {
+      photo_id: id,
+      body: comment,
+    };
+
+    const commentResponse = await axios.post(
+      `${process.env.REACT_APP_BACKEND_ENDPOINT}/api/comments`,
+      commentData
+    );
+
+    console.log(commentResponse);
+    navigate("/p/" + id);
+  };
+
   return (
     <Card>
       <Heading name="cat_person" href="#nowhere" />
@@ -36,7 +53,7 @@ const FeedCard = ({ id, body, path, time }) => {
 
         <Datetime id={id} time={time} />
 
-        <CommentForm />
+        <CommentForm onSubmit={handleNewComment} />
       </CardBody>
     </Card>
   );

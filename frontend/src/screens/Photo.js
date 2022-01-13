@@ -40,6 +40,20 @@ const Photo = () => {
     })();
   }, []);
 
+  const handleNewComment = async (comment) => {
+    const commentData = {
+      photo_id: Number(photoId),
+      body: comment,
+    };
+
+    const commentResponse = await axios.post(
+      `${process.env.REACT_APP_BACKEND_ENDPOINT}/api/comments`,
+      commentData
+    );
+
+    setComments([...comments, commentResponse.data[0]]);
+  };
+
   return (
     <SiteContainer className="flex flex-col items-center gap-2">
       {photo ? (
@@ -61,6 +75,7 @@ const Photo = () => {
             {comments.length > 0 &&
               comments.map((comment) => (
                 <Comment
+                  key={comment.id}
                   name={comment.username}
                   body={comment.body}
                   profile="#"
@@ -68,7 +83,7 @@ const Photo = () => {
               ))}
             <Datetime id={photo.id} time={photo.created_at} />
 
-            <CommentForm />
+            <CommentForm onSubmit={handleNewComment} />
           </CardBody>
         </Card>
       ) : (

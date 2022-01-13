@@ -7,6 +7,7 @@ const login = require("./src/api/login.js");
 const users = require("./src/api/users.js");
 const me = require("./src/api/me.js");
 const photos = require("./src/api/photos.js");
+const comments = require("./src/api/comments.js");
 const passport = require("passport");
 const session = require("express-session");
 const { Strategy: LocalStrategy } = require("passport-local");
@@ -32,6 +33,7 @@ app.use("/auth", login);
 app.use("/api/me", me);
 app.use("/api/users", users);
 app.use("/api/photos", photos);
+app.use("/api/comments", comments);
 
 // Handle requests for SPA
 app.get("*", (req, res) => {
