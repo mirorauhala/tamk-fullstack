@@ -5,8 +5,8 @@ exports.up = function (knex) {
     table.integer("user_id").unsigned().notNullable();
     table.string("body").notNullable();
 
-    table.foreign("photo_id").references("photos.id");
-    table.foreign("user_id").references("users.id");
+    table.foreign("photo_id").references("photos.id").onDelete("CASCADE");
+    table.foreign("user_id").references("users.id").onDelete("CASCADE");
     table.timestamps();
   });
 };
