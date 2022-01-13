@@ -39,7 +39,10 @@ const FeedCard = ({ id, body, path, time }) => {
       <CardBody>
         <Actions>
           <HeartIcon className="w-8 h-8" />
-          <ChatIcon className="w-8 h-8" />
+          <Link to={"/p/" + id}>
+            <span className={"sr-only"}>Add comment</span>
+            <ChatIcon className="w-8 h-8" />
+          </Link>
           <BookmarkIcon className="w-8 h-8 ml-auto" />
         </Actions>
 
