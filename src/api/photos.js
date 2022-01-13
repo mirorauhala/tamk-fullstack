@@ -100,6 +100,7 @@ const postNewPhoto = async (req, res) => {
       const photo = await Photo.save({
         path: request.path,
         body: request.body,
+        user_id: 1, // todo: use passportjs session
         is_visible: new Date().toISOString(),
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
