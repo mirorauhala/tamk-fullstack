@@ -1,7 +1,13 @@
 const Image = ({ image, alt, ...rest }) => {
   return (
     <div className="aspect-square">
-      <img loading="lazy" alt={alt} src={image} {...rest} />
+      <img
+        loading="lazy"
+        className="min-w-full"
+        alt={alt}
+        src={image}
+        {...rest}
+      />
     </div>
   );
 };
